@@ -4,13 +4,20 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      network: host
     container_name: packflow
     restart: unless-stopped
-    ports:
-      - "${PACKFLOW_PORT:-8080}:80"
+    expose:
+      - "80"
+    networks:
+      - npm-network
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1/"]
       interval: 30s
       timeout: 5s
       retries: 3
       start_period: 5s
+
+networks:
+  npm-network:
+    external: true
