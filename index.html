@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7f9" id="themeColor" />
+    <title>PackFlow · 打包追踪</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">P</span><span>packflow</span></div>
+        <div class="trip-switcher" id="tripSwitcher" role="button" tabindex="0" aria-label="编辑当前清单"><span class="trip-dot"></span><div><strong id="tripName">上海出差</strong><small id="tripMeta">5 个分组 · 28 件物品</small></div><span class="icon-button" aria-hidden="true">⌄</span></div>
+        <nav class="nav" aria-label="主导航">
+          <button class="nav-item active" data-view="overview"><span>⌘</span>总览</button>
+          <button class="nav-item" data-view="groups"><span>▦</span>所有分组</button>
+          <button class="nav-item" data-view="tracking"><span>⌁</span>追踪包裹</button>
+        </nav>
+        <div class="sidebar-bottom"><button class="help-link theme-toggle" id="themeToggle" type="button" aria-pressed="false"><span class="theme-icon">☾</span><span class="theme-label">深夜模式</span></button><div class="profile"><span class="avatar">H</span><div><strong>Huayu</strong><small>个人清单</small></div><span class="more">•••</span></div></div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar"><div class="breadcrumb">我的清单 <span>/</span> <strong id="pageLabel">总览</strong></div><div class="top-actions"><button class="secondary-button" id="importBtn">↧ 导入</button><button class="secondary-button" id="exportBtn">↥ 导出</button><button class="primary-button" id="addItemBtn">＋ 添加物品</button><button class="circle-button" id="addGroupBtn" aria-label="添加分组">＋</button><input id="importInput" type="file" accept="application/json,.json" hidden /></div></header>
+        <section class="page-header"><div><p class="eyebrow">A LITTLE LESS TO REMEMBER</p><h1>出发前，轻一点。</h1><p class="subtitle">把要带的、要寄的、已经到的，都放在一个清晰的地方。</p></div><div class="date-stamp"><span>当前清单</span><strong id="todayText">2026.08.14</strong></div></section>
+
+        <section class="summary-grid" id="summaryGrid"></section>
+        <section class="toolbar"><div class="search-box"><span>⌕</span><input id="searchInput" placeholder="搜索物品、分组或备注" /></div><div class="filter-tabs" role="tablist"><button class="filter-tab active" data-filter="all">全部</button><button class="filter-tab" data-filter="todo">待准备</button><button class="filter-tab" data-filter="packed">已打包</button><button class="filter-tab" data-filter="shipping">运输中</button></div></section>
+        <section class="content-grid"><div class="groups-column"><div class="section-heading"><h2 id="sectionTitle">你的分组</h2><span class="muted" id="visibleCount"></span></div><div id="groupList" class="group-list"></div><button class="add-group-row" id="addGroupRow">＋ 新建一个自定义分组</button></div><aside class="activity-card"><div class="section-heading"><h2>最近动态</h2><button class="text-button" id="clearActivity">清除</button></div><div id="activityList" class="activity-list"></div><div class="tip-card"><span class="tip-icon">✦</span><div><strong>一个小建议</strong><p>把“出发后才需要”的物品单独分组，打包时会更从容。</p></div></div></aside></section>
+      </main>
+    </div>
+    <div class="modal-backdrop" id="itemModal" hidden><form class="modal" id="itemForm"><button type="button" class="modal-close" data-close="itemModal">×</button><p class="eyebrow">ITEM</p><h2 id="itemModalTitle">添加物品</h2><label>物品名称<input name="name" required placeholder="例如：降噪耳机" /></label><label>所属分组<select name="group" id="itemGroupSelect"></select></label><label>备注（可选）<input name="note" placeholder="例如：放在黑色收纳袋" /></label><label>追踪单号（可选）<input name="tracking" placeholder="快递单号或箱号" /></label><div class="modal-actions"><button type="button" class="secondary-button" data-close="itemModal">取消</button><button class="primary-button" id="itemSaveButton">保存物品</button></div></form></div>
+    <div class="modal-backdrop" id="groupModal" hidden><form class="modal" id="groupForm"><button type="button" class="modal-close" data-close="groupModal">×</button><p class="eyebrow">GROUP</p><h2 id="groupModalTitle">新建分组</h2><label>分组名称<input name="name" required placeholder="例如：露营装备" /></label><label>一句描述（可选）<input name="description" placeholder="这组东西要去哪里？" /></label><label>选择颜色<select name="color"><option value="blue">湖蓝</option><option value="peach">杏橙</option><option value="purple">丁香紫</option><option value="green">苔绿</option></select></label><div class="modal-actions"><button type="button" class="secondary-button" data-close="groupModal">取消</button><button class="primary-button">保存分组</button></div></form></div>
+    <div class="modal-backdrop" id="tripModal" hidden><form class="modal" id="tripForm"><button type="button" class="modal-close" data-close="tripModal">×</button><p class="eyebrow">LIST SETTINGS</p><h2>维护当前清单</h2><label>清单名称<input name="name" required placeholder="例如：上海出差" /></label><p class="form-hint">名称只保存在当前浏览器，不会影响物品和分组。</p><div class="modal-actions"><button type="button" class="secondary-button" data-close="tripModal">取消</button><button class="primary-button">保存名称</button></div></form></div>
+    <script src="app.js"></script>
+  </body>
+</html>
