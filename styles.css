@@ -147,6 +147,12 @@ body{min-width:0}
 .top-actions .theme-toggle .theme-label{width:auto;height:auto}
 .toolbar-actions{display:flex;align-items:center;gap:8px;margin-left:auto}
 .toolbar-actions button{flex:none;white-space:nowrap}
+.privacy-notice{display:flex;align-items:center;gap:10px;margin-top:18px;padding:11px 14px;border:1px solid #d9eadf;border-radius:9px;background:#f1f8f3;color:#668170;font-size:10px;line-height:1.55}
+.privacy-icon{width:20px;height:20px;display:grid;place-items:center;flex:none;border-radius:50%;background:#dcefe2;color:#4f8560;font-weight:800}
+.privacy-notice strong{color:#426c50;margin-right:8px}
+body.dark .privacy-notice{border-color:#314b3a;background:#203329;color:#9db9a5}
+body.dark .privacy-icon{background:#2c4936;color:#9bd0a9}
+body.dark .privacy-notice strong{color:#b7d8c0}
 .view-empty{background:var(--paper);border:1px dashed var(--line);border-radius:10px;padding:48px 20px}
 .content-grid{display:block}
 
@@ -177,6 +183,9 @@ body{min-width:0}
   .top-actions{gap:6px}
   .top-actions .theme-toggle,.circle-button{width:40px;height:40px;padding:0;display:grid;place-items:center;border-radius:10px}
   .top-actions .theme-toggle .theme-icon{font-size:16px}
+  .privacy-notice{align-items:flex-start;margin-top:12px;padding:10px 12px;font-size:10px}
+  .privacy-notice strong,.privacy-notice div>span{display:block}
+  .privacy-notice strong{margin:0 0 2px}
   .page-header{padding:28px 0 22px;display:block}
   .page-header h1{font-size:28px;letter-spacing:-1.3px;margin-bottom:9px}
   .subtitle{font-size:12px;line-height:1.6;padding-right:16px}

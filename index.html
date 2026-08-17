@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260817-9" />
+    <link rel="stylesheet" href="styles.css?v=20260817-10" />
   </head>
   <body>
     <div class="app-shell">
@@ -20,6 +20,7 @@
           </div>
           <div class="top-actions"><button class="secondary-button theme-toggle" id="themeToggle" type="button" aria-pressed="false"><span class="theme-icon">☾</span><span class="theme-label">深夜模式</span></button></div>
         </header>
+        <aside class="privacy-notice" role="note" aria-label="数据隐私说明"><span class="privacy-icon" aria-hidden="true">✓</span><div><strong>数据只留在本机</strong><span>所有清单数据仅保存在当前浏览器，不会上传到服务器，使用更安心。建议定期导出备份，清除浏览器数据或更换设备后将无法自动恢复。</span></div></aside>
         <section class="page-header"><div><p class="eyebrow">A LITTLE LESS TO REMEMBER</p><h1>出发前，轻一点。</h1><p class="subtitle">把要带的、要寄的、已经到的，都放在一个清晰的地方。</p></div><div class="date-stamp"><span>当前清单</span><strong id="todayText">2026.08.14</strong></div></section>
 
         <section class="summary-grid" id="summaryGrid"></section>
@@ -31,6 +32,6 @@
     <div class="modal-backdrop" id="groupModal" hidden><form class="modal" id="groupForm"><button type="button" class="modal-close" data-close="groupModal">×</button><p class="eyebrow">GROUP</p><h2 id="groupModalTitle">新建分组</h2><label>分组名称<input name="name" required placeholder="例如：露营装备" /></label><label>一句描述（可选）<input name="description" placeholder="这组东西要去哪里？" /></label><label>选择颜色<select name="color"><option value="blue">湖蓝</option><option value="peach">杏橙</option><option value="purple">丁香紫</option><option value="green">苔绿</option></select></label><div class="modal-actions"><button type="button" class="secondary-button" data-close="groupModal">取消</button><button class="primary-button">保存分组</button></div></form></div>
     <div class="modal-backdrop" id="tripModal" hidden><form class="modal" id="tripForm"><button type="button" class="modal-close" data-close="tripModal">×</button><p class="eyebrow">LIST SETTINGS</p><h2>维护当前清单</h2><label>清单名称<input name="name" required placeholder="例如：上海出差" /></label><p class="form-hint">名称只保存在当前浏览器，不会影响物品和分组。</p><div class="modal-actions"><button type="button" class="secondary-button" data-close="tripModal">取消</button><button class="primary-button">保存名称</button></div></form></div>
     <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
-    <script src="app.js?v=20260817-9"></script>
+    <script src="app.js?v=20260817-10"></script>
   </body>
 </html>
