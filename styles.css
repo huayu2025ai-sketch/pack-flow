@@ -30,7 +30,6 @@ body.dark .item-row{border-color:#2e3b44}
 body.dark .progress-track{background:#2d3a42}
 body.dark .check{border-color:#687b86}
 body.dark .circle-button{border-color:#426070}
-body.dark .add-group-row{border-color:#4a626e;color:#9bb9c7}
 body.dark .tip-card{background:#2d2c27;color:#c8bda3}
 body.dark .tip-card strong{color:#ded1b1}
 body.dark .modal-backdrop{background:rgba(4,9,12,.65)}
@@ -225,7 +224,6 @@ body.dark .privacy-notice strong{color:#b7d8c0}
   .item-row .row-action{flex:none;width:28px;height:28px}
   .item-row .item-delete{opacity:1;margin:0}
   .add-item-inline{min-height:38px;text-align:left}
-  .add-group-row{height:50px}
   .modal-backdrop{padding:14px;align-items:end}
   .modal{width:100%;max-height:calc(100dvh - 28px);overflow:auto;border-radius:18px 18px 12px 12px;padding:24px 20px calc(20px + env(safe-area-inset-bottom))}
   .modal input,.modal select{height:44px;font-size:16px}

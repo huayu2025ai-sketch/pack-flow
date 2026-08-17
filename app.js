@@ -39,7 +39,7 @@ document.addEventListener('click',e=>{
   if(t.id==='filterToggle'||t.closest('#filterToggle')){const toolbar=$('.toolbar'),collapsed=toolbar.classList.toggle('filters-collapsed'),button=$('#filterToggle');button.setAttribute('aria-expanded',String(!collapsed));button.querySelector('.filter-toggle-icon').textContent=collapsed?'⌄':'⌃'}
   if(t.id==='addItemBtn'){populateGroups();prepareItemModal();openModal('itemModal')}
   if(t.matches('[data-group]')){populateGroups();prepareItemModal();openModal('itemModal',t.dataset.group)}
-  if(t.id==='addGroupBtn'||t.id==='addGroupRow'){prepareGroupModal();openModal('groupModal')}
+  if(t.id==='addGroupBtn'){prepareGroupModal();openModal('groupModal')}
   if(t.matches('[data-edit-group]')){prepareGroupModal(t.dataset.editGroup);openModal('groupModal')}
   if(t.matches('[data-delete-group]'))deleteGroup(t.dataset.deleteGroup);
   if(t.matches('[data-edit-item]')){populateGroups();prepareItemModal(t.dataset.editItem);openModal('itemModal')}
