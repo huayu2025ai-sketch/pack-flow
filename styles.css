@@ -130,24 +130,30 @@ body{min-width:0}
 .app-shell{display:block}
 .main-content{width:min(1440px,100%);margin:0 auto;padding:0 40px 60px}
 .topbar{height:78px;display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"main nav actions";gap:26px;align-items:center}
-.topbar-main{grid-area:main;display:flex;align-items:center;gap:20px}
-.topbar .brand{padding:0;gap:9px;white-space:nowrap}
-.topbar .trip-switcher{width:218px;margin:0;padding:8px 10px;border-radius:9px}
-.topbar .nav{grid-area:nav;display:flex;justify-content:center;gap:4px}
+.topbar-main{grid-area:main;display:flex;align-items:center;gap:20px;min-width:0}
+.topbar .brand{padding:0;gap:9px;white-space:nowrap;flex:none}
+.topbar .trip-switcher{width:218px;margin:0;padding:8px 10px;border-radius:9px;flex:none}
+.topbar .nav{grid-area:nav;display:flex;justify-content:center;gap:4px;min-width:0}
 .topbar .nav-item{width:auto;height:36px;padding:0 12px;font-size:11px;white-space:nowrap}
 .topbar .nav-item span{font-size:14px}
-.top-actions{grid-area:actions}
+.top-actions{grid-area:actions;flex:none}
+.top-actions button{flex:none;white-space:nowrap}
 .top-actions .theme-toggle{width:auto;padding:0 12px}
 .top-actions .theme-toggle .theme-icon{border:0;width:auto;height:auto}
 .top-actions .theme-toggle .theme-label{width:auto;height:auto}
 .view-empty{background:var(--paper);border:1px dashed var(--line);border-radius:10px;padding:48px 20px}
+.content-grid{display:block}
 
-@media(max-width:1050px){
+@media(max-width:1250px){
   .main-content{padding-left:26px;padding-right:26px}
   .topbar{gap:14px}
   .topbar-main{gap:12px}
-  .topbar .brand>span:last-child,.theme-label,.utility-action span{display:none}
+  .topbar .brand>span:last-child,.top-actions .theme-toggle .theme-label,.utility-action span{display:none}
   .topbar .trip-switcher{width:190px}
+  .top-actions .utility-action,.top-actions .theme-toggle{width:35px;padding:0;display:grid;place-items:center}
+}
+
+@media(max-width:1050px){
   .content-grid{grid-template-columns:minmax(0,1fr) 260px}
   .summary-grid{grid-template-columns:repeat(2,1fr)}
 }
