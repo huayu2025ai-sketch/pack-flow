@@ -129,15 +129,16 @@ body.dark .toast-error .toast-icon{background:#4b302b;color:#e59578}
 body{min-width:0}
 .app-shell{display:block}
 .main-content{width:min(1440px,100%);margin:0 auto;padding:0 40px 60px}
-.topbar{height:78px;display:grid;grid-template-columns:auto 1fr auto auto;grid-template-areas:"main nav actions add";gap:18px;align-items:center}
+.topbar{height:78px;display:grid;grid-template-columns:auto 1fr auto auto auto;grid-template-areas:"main nav data actions add";gap:18px;align-items:center}
 .topbar-main{grid-area:main;display:flex;align-items:center;gap:20px;min-width:0}
 .topbar .brand{padding:0;gap:9px;white-space:nowrap;flex:none}
 .topbar .trip-switcher{width:218px;margin:0;padding:8px 10px;border-radius:9px;flex:none}
 .topbar .nav{grid-area:nav;display:flex;justify-content:center;gap:4px;min-width:0}
 .topbar .nav-item{width:auto;height:36px;padding:0 12px;font-size:11px;white-space:nowrap}
 .topbar .nav-item span{font-size:14px}
+.data-actions{grid-area:data;display:flex;align-items:center;gap:9px;flex:none}
 .top-actions{grid-area:actions;flex:none}
-.top-actions button{flex:none;white-space:nowrap}
+.data-actions button,.top-actions button{flex:none;white-space:nowrap}
 .top-actions .theme-toggle{width:auto;padding:0 12px}
 .top-actions .theme-toggle .theme-icon{border:0;width:auto;height:auto}
 .top-actions .theme-toggle .theme-label{width:auto;height:auto}
@@ -149,9 +150,9 @@ body{min-width:0}
   .main-content{padding-left:26px;padding-right:26px}
   .topbar{gap:14px}
   .topbar-main{gap:12px}
-  .topbar .brand>span:last-child,.top-actions .theme-toggle .theme-label,.utility-action span{display:none}
+  .topbar .brand>span:last-child,.top-actions .theme-toggle .theme-label,.data-actions .utility-action span{display:none}
   .topbar .trip-switcher{width:190px}
-  .top-actions .utility-action,.top-actions .theme-toggle{width:35px;padding:0;display:grid;place-items:center}
+  .data-actions .utility-action,.top-actions .theme-toggle{width:35px;padding:0;display:grid;place-items:center}
 }
 
 @media(max-width:1050px){
@@ -162,7 +163,7 @@ body{min-width:0}
 @media(max-width:760px){
   body{overflow-x:hidden}
   .main-content{padding:0 16px 92px}
-  .topbar{position:sticky;top:0;z-index:10;height:auto;min-height:116px;margin:0 -16px;padding:12px 16px 10px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"main actions" "nav add";gap:10px 8px;border-color:var(--line)}
+  .topbar{position:sticky;top:0;z-index:10;height:auto;min-height:168px;margin:0 -16px;padding:12px 16px 10px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"main actions" "nav add" "data data";gap:10px 8px;border-color:var(--line)}
   .topbar-main{min-width:0;gap:10px}
   .topbar .brand>span:last-child{display:none}
   .topbar .brand-mark{width:34px;height:34px}
@@ -170,7 +171,9 @@ body{min-width:0}
   .trip-switcher strong{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .trip-switcher small{font-size:9px;white-space:nowrap}
   .top-actions{gap:6px}
-  .top-actions .utility-action{display:none}
+  .data-actions{width:100%;gap:8px}
+  .data-actions .utility-action{display:flex;flex:1;width:auto;height:42px;justify-content:center;border-radius:10px}
+  .data-actions .utility-action span{display:inline}
   .top-actions .theme-toggle,.circle-button{width:40px;height:40px;padding:0;display:grid;place-items:center;border-radius:10px}
   .top-actions .theme-toggle .theme-icon{font-size:16px}
   #addItemBtn{position:static;height:42px;padding:0 14px;border-radius:10px;box-shadow:none}
