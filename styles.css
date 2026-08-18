@@ -75,6 +75,7 @@ body.dark .group-desc,body.dark .item-note,body.dark .muted{color:#9eafb9}
 .group-actions{align-items:center}
 .group-actions .progress-label{height:24px;display:flex;align-items:center;margin-left:4px}
 .group-title-wrap>div,.group-title-line{min-width:0}.group-title-line{display:flex;align-items:center;gap:7px}.group-title-line .group-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.section-title-actions{display:flex;align-items:center;gap:9px}.bulk-collapse{height:26px;padding:0 9px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--muted);font-size:10px;white-space:nowrap}.bulk-collapse:hover{color:var(--blue);border-color:var(--blue)}.bulk-collapse:disabled{opacity:.45;cursor:default}
 .group-collapse{height:24px;padding:0 7px;border-radius:5px;color:var(--muted);font-size:10px;white-space:nowrap}
 .group-collapse:hover{background:var(--blue-light);color:var(--blue)}
 .group-card.collapsed .item-list,.group-card.collapsed .add-item-inline{display:none}
