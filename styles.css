@@ -74,6 +74,7 @@ body.dark .group-desc,body.dark .item-note,body.dark .muted{color:#9eafb9}
 .item-note:not(:empty){border-left:1px solid var(--line);padding-left:12px}
 .group-actions{align-items:center}
 .group-actions .progress-label{height:24px;display:flex;align-items:center;margin-left:4px}
+.group-title-wrap>div,.group-title-line{min-width:0}.group-title-line{display:flex;align-items:center;gap:7px}.group-title-line .group-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .group-collapse{height:24px;padding:0 7px;border-radius:5px;color:var(--muted);font-size:10px;white-space:nowrap}
 .group-collapse:hover{background:var(--blue-light);color:var(--blue)}
 .group-card.collapsed .item-list,.group-card.collapsed .add-item-inline{display:none}
@@ -218,7 +219,7 @@ body.dark .privacy-notice strong{color:#b7d8c0}
   .group-actions .group-status-select{margin-right:auto;height:30px}
   .group-actions .row-action{width:32px;height:32px}
   .group-actions .progress-label{height:32px}
-  .group-actions .group-collapse{height:32px;padding:0 8px}
+  .group-title-line .group-collapse{height:28px;padding:0 8px}
   .item-row{display:flex;flex-wrap:nowrap;gap:6px;padding:11px 0;align-items:center;min-width:0}
   .drag-handle{display:none}
   .check{width:20px;height:20px}
