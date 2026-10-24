@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 APP_NAME="packflow"
 HOST="${PACKFLOW_HOST:-127.0.0.1}"
 PORT="${PACKFLOW_PORT:-8080}"
@@ -25,9 +25,27 @@ EOF
 }
 
 read_pid() {
+  local pid command cwd
   if [[ -f "${PID_FILE}" ]]; then
-    tr -d '[:space:]' < "${PID_FILE}"
+    pid="$(tr -d '[:space:]' < "${PID_FILE}")"
+    if is_running "${pid}"; then
+      echo "${pid}"
+      return 0
+    fi
   fi
+
+  # Recover a server started without this script, or after its PID file was lost.
+  command -v lsof >/dev/null 2>&1 || return 0
+  while IFS= read -r pid; do
+    command="$(ps -p "${pid}" -o command= 2>/dev/null)" || continue
+    [[ "${command}" == *" -m http.server ${PORT} --bind ${HOST}" ]] || continue
+    cwd="$(lsof -a -p "${pid}" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p')"
+    [[ "${cwd}" == "${SCRIPT_DIR}" ]] || continue
+    echo "${pid}" > "${PID_FILE}"
+    echo "${pid}"
+    return 0
+  done < <(lsof -nP -t -iTCP:"${PORT}" -sTCP:LISTEN 2>/dev/null || true)
+  return 0
 }
 
 is_running() {
@@ -76,6 +94,10 @@ start() {
   sleep 0.2
   if ! is_running "$(read_pid)"; then
     echo "启动失败，请查看 ${LOG_FILE}" >&2
+    tail -n 1 "${LOG_FILE}" >&2
+    if grep -q 'Address already in use' "${LOG_FILE}"; then
+      echo "端口 ${PORT} 已被其他服务占用，可使用 PACKFLOW_PORT=9000 $(basename "$0") start 更换端口。" >&2
+    fi
     rm -f "${PID_FILE}"
     exit 1
   fi
